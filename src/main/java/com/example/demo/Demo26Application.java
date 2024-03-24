@@ -8,7 +8,7 @@ public class Demo26Application {
 
     public static void main(String[] args) {
         SpringApplication.run(Demo26Application.class, args);
-        System.out.println("http://localhost:8082/product/uploadimage");
+        System.out.println("http://localhost:8082/product/home");
     }
 
 }

@@ -11,30 +11,32 @@ public class ProductJava {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
     private String image;
-    private String cc;
-    private String heHe;
+    private String nameImage;
+    private String description ;
+    private String author;
+    private String favourite;
+    private String tag;
 
     public ProductJava() {
     }
 
-    public ProductJava(String cc, String image) {
+    public ProductJava(String image, String nameImage, String description, String author, String favourite, String tag) {
         this.image = image;
-        this.cc = cc;
+        this.nameImage = nameImage;
+        this.description = description;
+        this.author = author;
+        this.favourite = favourite;
+        this.tag = tag;
     }
 
-    public ProductJava(int id, String image, String cc, String heHe) {
+    public ProductJava(int id, String image, String nameImage, String description, String author, String favourite, String tag) {
         this.id = id;
         this.image = image;
-        this.cc = cc;
-        this.heHe = heHe;
-    }
-
-    public String getHeHe() {
-        return heHe;
-    }
-
-    public void setHeHe(String heHe) {
-        this.heHe = heHe;
+        this.nameImage = nameImage;
+        this.description = description;
+        this.author = author;
+        this.favourite = favourite;
+        this.tag = tag;
     }
 
     public int getId() {
@@ -53,17 +55,43 @@ public class ProductJava {
         this.image = image;
     }
 
-    public String getCc() {
-        return cc;
+    public String getNameImage() {
+        return nameImage;
     }
 
-    public void setCc(String cc) {
-        this.cc = cc;
+    public void setNameImage(String nameImage) {
+        this.nameImage = nameImage;
     }
 
-    public ProductJava(int id, String image, String cc) {
-        this.id = id;
-        this.image = image;
-        this.cc = cc;
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
+    }
+
+    public String getAuthor() {
+        return author;
+    }
+
+    public void setAuthor(String author) {
+        this.author = author;
+    }
+
+    public String getFavourite() {
+        return favourite;
+    }
+
+    public void setFavourite(String favourite) {
+        this.favourite = favourite;
+    }
+
+    public String getTag() {
+        return tag;
+    }
+
+    public void setTag(String tag) {
+        this.tag = tag;
     }
 }

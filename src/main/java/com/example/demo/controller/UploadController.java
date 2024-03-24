@@ -20,27 +20,33 @@ import java.io.IOException;
 public class UploadController {
     @Autowired
     UploadRepo uploadRepo;
-    public static String UPLOAD_DIRECTORY = "/home/dang/Test111111111111111111/demo26/src/main/resources/static/";
+    public static String UPLOAD_DIRECTORY = "\\C:\\Users\\namca\\image\\";
 
-    @GetMapping("/uploadimage")
-    public ModelAndView displayUploadForm() {
-        ModelAndView modelAndView=new ModelAndView("index");
-        modelAndView.addObject("all",uploadRepo.findAll());
-        modelAndView.addObject("ob",new ProductJava());
+    @GetMapping("/create")
+    public ModelAndView displayCreateForm() {
+        ModelAndView modelAndView = new ModelAndView("create");
+        modelAndView.addObject("ob", new ProductJava());
         return modelAndView;
     }
+
+    @GetMapping("/home")
+    public ModelAndView displayHomePage() {
+        ModelAndView modelAndView = new ModelAndView("home");
+        modelAndView.addObject("all", uploadRepo.findAll());
+        return modelAndView;
+    }
+
     public String uploadImage(MultipartFile file) throws IOException {
-        String fileName=file.getOriginalFilename();
-        FileCopyUtils.copy(file.getBytes(), new File(UPLOAD_DIRECTORY+fileName));
+        String fileName = file.getOriginalFilename();
+        FileCopyUtils.copy(file.getBytes(), new File(UPLOAD_DIRECTORY + fileName));
         return fileName;
     }
-    @PostMapping("/conC")
-    public ModelAndView upload(@RequestParam(value = "file") MultipartFile file, @RequestParam(value = "music")MultipartFile file1, ProductJava productJava) throws IOException {
-        ModelAndView modelAndView=new ModelAndView("redirect:/product/uploadimage");
+
+    @PostMapping("/upload")
+    public ModelAndView upload(@RequestParam("file") MultipartFile file, ProductJava productJava) throws IOException {
+        ModelAndView modelAndView = new ModelAndView("redirect:/product/create");
         productJava.setImage(uploadImage(file));
-        productJava.setCc(uploadImage(file1));
         uploadRepo.save(productJava);
         return modelAndView;
     }
 }
-
